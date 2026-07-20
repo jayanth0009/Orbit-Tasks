@@ -33,9 +33,19 @@ cp .env.example .env
 npm run dev
 ```
 
-Default API URL: `http://localhost:4000`
+Default backend URL on your computer: `http://localhost:4000`
 
-For Android emulator, the mobile app uses `http://10.0.2.2:4000/api`.
+Mobile API URL behavior:
+
+- Android emulator: `http://10.0.2.2:4000/api`
+- iOS simulator: `http://localhost:4000/api`
+- Physical phone: replace the URL in `mobile/src/config/api.ts` with your computer's LAN IP, for example `http://192.168.1.12:4000/api`
+
+If the app cannot reach the API, confirm the backend is running with:
+
+```bash
+curl http://localhost:4000/health
+```
 
 ## Mobile Setup
 
@@ -65,4 +75,3 @@ npm run android
 ## Creative UI Direction
 
 The app uses a deep navy canvas, glowing accent cards, pill controls, priority color bands, and compact task metadata to make the assignment feel more product-like while staying simple and usable.
-

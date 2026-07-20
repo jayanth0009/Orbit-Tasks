@@ -1,6 +1,5 @@
 import { CreateTaskInput, Task } from '../types/task';
-
-const API_URL = 'http://10.0.2.2:4000/api';
+import { API_URL } from '../config/api';
 
 export interface AuthResponse {
   token: string;
@@ -53,4 +52,3 @@ export const api = {
   toggleTask: (token: string, id: string) => request<Task>(`/tasks/${id}/toggle`, { method: 'PATCH' }, token),
   deleteTask: (token: string, id: string) => request<void>(`/tasks/${id}`, { method: 'DELETE' }, token)
 };
-
