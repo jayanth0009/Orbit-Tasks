@@ -4,5 +4,8 @@ dist/
 .DS_Store
 android/build/
 android/app/build/
+mobile/android/local.properties
+mobile/android/.gradle/
+mobile/android/build/
+mobile/android/app/build/
 ios/build/
-
