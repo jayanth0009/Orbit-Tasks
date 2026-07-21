@@ -20,15 +20,23 @@ app.get('/health', (_req, res) => {
 app.use('/api/auth', authRoutes);
 app.use('/api/tasks', taskRoutes);
 
-mongoose
-  .connect(process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/orbit_tasks')
-  .then(() => {
-    app.listen(port, () => {
-      console.log(`Orbit Tasks API running on port ${port}`);
-    });
-  })
-  .catch((error) => {
-    console.error('MongoDB connection failed', error);
-    process.exit(1);
+const start = () => {
+  app.listen(port, '127.0.0.1', () => {
+    console.log(`Orbit Tasks API running on port ${port}`);
   });
+};
 
+if (process.env.MONGO_URI === 'memory') {
+  console.log('Using in-memory storage for local demo mode.');
+  start();
+} else {
+  mongoose
+    .connect(process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/orbit_tasks')
+    .then(() => {
+      start();
+    })
+    .catch((error) => {
+      console.error('MongoDB connection failed', error);
+      process.exit(1);
+    });
+}

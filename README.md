@@ -35,6 +35,8 @@ npm run dev
 
 Default backend URL on your computer: `http://localhost:4000`
 
+The default `.env.example` uses `MONGO_URI=memory` so the API runs immediately for a local demo. Use a real MongoDB connection string, such as `mongodb://127.0.0.1:27017/orbit_tasks`, when you want persistent database storage.
+
 Mobile API URL behavior:
 
 - Android emulator: `http://10.0.2.2:4000/api`
